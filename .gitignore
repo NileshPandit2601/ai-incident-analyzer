@@ -5,3 +5,5 @@ __pycache__/
 .env
 # assignment brief (not ours to publish)
 *.docx
+# internal working plan (kept locally)
+PLAN.md

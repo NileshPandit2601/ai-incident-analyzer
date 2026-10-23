@@ -43,6 +43,9 @@ logs ─► Parser ─► Pattern analyzer ─► Rule severity ─────�
               └─ facts digest + numbered log lines ─► LLM (JSON schema) ─► Validator ─► UI / report
 ```
 
+For the reasoning behind the design (problem framing, risks, alternatives considered and lessons from testing), see
+[APPROACH.md](APPROACH.md).
+
 The work is split between code and the model. A local model is good at reasoning about an incident but unreliable at
 counting and prone to inventing details, so code handles the facts and the model reasons over them.
 
