@@ -17,6 +17,8 @@ claim is only partly supported, and the AI and rule severities disagree, so the 
 | **Root cause: evidence vs. assumptions, two severity opinions** | **Actions: ordered steps and escalation** |
 | ![Root cause](screenshots/root_cause.png) | ![Actions](screenshots/actions.png) |
 
+The incident summary exported from this run: [screenshots/incident_summary_example.md](screenshots/incident_summary_example.md).
+
 ## Quick start
 
 Requirements: Python 3.10+ and a running Ollama with the model pulled.
