@@ -94,6 +94,7 @@ Planning gets you a design; testing tells you where it's wrong. Issues found and
 | Prompts could exceed the model's context window | Ollama truncates oversized prompts silently | A character budget derived from `num_ctx` decides how many lines are sent |
 | The model spent its time on hidden "thinking" before answering | The newer model has a reasoning mode enabled by default | Thinking is disabled. The schema's evidence-first order already gives it room to reason. |
 | Hardware limits (4 GB GPU, 16 GB RAM) | A 9B model doesn't fit on the GPU | Context window set to 8192; model chosen within a 10 GB limit (`qwen2.5:7b` → `qwen3.5:9b`) for better reasoning at acceptable speed |
+| Full evaluation: the AI found the right cause on 6/6 samples but rated severity one level too high on 4/6, including one outside the accepted range | The model treats any customer-visible error as an outage and doesn't weigh partial impact (e.g. 2 failing products while others work) | Confirms the decision to keep an independent rule score and flag disagreement. A next step is to give the model explicit severity definitions with examples and re-measure. |
 | A short pasted DB-crash log: AI said Critical, rules said Medium | The log's shutdown lines were tagged `[SYSTEM]`/`[INFO]`, which the rules don't treat as outage signals | **Working as designed:** the disagreement was surfaced as "needs human review" rather than hidden. It also points to a rule improvement (see below). |
 
 ---

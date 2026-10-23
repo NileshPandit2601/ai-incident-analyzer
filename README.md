@@ -77,10 +77,34 @@ downgrades confidence when evidence is weak. If Ollama is down, the app still sh
   large logs).
 * **Scenario evaluation** (`python tests\eval_scenarios.py`): runs six simulated incidents (Critical to Low) through
   the real model. It scores JSON validity, severity, required root-cause concepts and evidence grounding.
-* **Results so far:** on the payment outage sample, `qwen3.5:9b` rated it **Critical** (as expected), identified
-  the batch job exhausting the DB pool as the trigger, and 3 of 4 evidence claims were verified. A partial run with
-  the earlier `qwen2.5:7b` gave acceptable severity and found every required cause concept on both samples it
-  covered.
+  The expected severity and required concepts for each sample were written down before running the model.
+
+### Results (`qwen3.5:9b`, temperature 0, full run in [tests/eval_results.md](tests/eval_results.md))
+
+| Sample | Expected | AI severity | Rule severity | Cause concepts found | Evidence verified |
+|---|---|---|---|---|---|
+| payment_db_timeout | Critical | Critical | Critical | 100% | 75% |
+| memory_leak_oom | High | Critical | Critical | 100% | 100% |
+| auth_token_expiry | High | High | High | 100% | 100% |
+| mixed_json_format | High | **Critical ✗** | High | 100% | 100% |
+| disk_space_warning | Medium | High | Medium | 100% | 67% |
+| minor_retry_noise | Low | Medium | Low | 100% | 100% |
+
+| Metric | Result |
+|---|---|
+| Valid structured output | 6/6 |
+| Root cause identified (all required concepts) | 6/6 |
+| Evidence claims verified against the log | 90% on average |
+| AI severity within the accepted range / exact | 5/6 / 2/6 |
+| Rule severity within the accepted range | 6/6 |
+| Average analysis time (4 GB GPU laptop) | about 5.7 minutes |
+
+**What this shows.** The model is strong at *explaining* incidents: it found the specific trigger every time, for
+example the `rc-20261020` reconciliation job, the zero-second key-rotation grace period, and the legacy import
+without warehouse mapping. But it **over-escalates severity**: 4 of 6 were rated one level too high. The one miss
+called a partial failure Critical: only two products returned errors while others kept working. The transparent
+rule score was better calibrated. This is the reason the design keeps two independent severity opinions and flags
+large disagreements for human review instead of trusting the model alone.
 
 ## Assumptions and limitations
 
