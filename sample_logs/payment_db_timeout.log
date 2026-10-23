@@ -1,0 +1,54 @@
+2026-10-20 14:00:01,112 INFO  [payment-service] Health check OK (db=UP, gateway=UP)
+2026-10-20 14:00:05,331 INFO  [order-service] Order 88120 created for customer 5531
+2026-10-20 14:00:05,402 INFO  [payment-service] Processing payment for order 88120 amount=1499.00 INR
+2026-10-20 14:00:05,987 INFO  [payment-service] Payment for order 88120 authorized in 585ms
+2026-10-20 14:01:12,044 INFO  [order-service] Order 88121 created for customer 1207
+2026-10-20 14:01:12,101 INFO  [payment-service] Processing payment for order 88121 amount=349.00 INR
+2026-10-20 14:01:12,733 INFO  [payment-service] Payment for order 88121 authorized in 632ms
+2026-10-20 14:02:30,210 WARN  [payment-service] HikariPool-1 - Connection pool usage at 85% (17/20 active)
+2026-10-20 14:02:44,876 INFO  [batch-reconciler] Starting nightly reconciliation job (reconcile_id=rc-20261020)
+2026-10-20 14:02:45,010 INFO  [batch-reconciler] Fetching 1,240,553 transactions for reconciliation window
+2026-10-20 14:03:01,455 WARN  [payment-service] HikariPool-1 - Connection pool usage at 100% (20/20 active), 6 threads waiting
+2026-10-20 14:03:05,020 WARN  [postgres-primary] Slow query detected: duration=8421ms query="SELECT * FROM transactions WHERE created_at >= $1" client=batch-reconciler
+2026-10-20 14:03:09,880 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:03:09,881 ERROR [payment-service] Failed to persist payment record for order 88122: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at com.shop.payment.repository.PaymentRepository.save(PaymentRepository.java:58)
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+2026-10-20 14:03:10,002 ERROR [order-service] Payment API call failed for order 88122: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:03:15,412 WARN  [postgres-primary] Slow query detected: duration=12877ms query="SELECT * FROM transactions WHERE created_at >= $1" client=batch-reconciler
+2026-10-20 14:03:22,509 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:03:22,510 ERROR [payment-service] Failed to persist payment record for order 88123: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection
+2026-10-20 14:03:22,640 ERROR [order-service] Payment API call failed for order 88123: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:03:25,300 WARN  [api-gateway] Upstream payment-service latency p99=31250ms exceeds SLO 2000ms
+2026-10-20 14:03:31,118 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:03:31,119 ERROR [payment-service] Failed to persist payment record for order 88124: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection
+2026-10-20 14:03:31,245 ERROR [order-service] Payment API call failed for order 88124: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:03:40,777 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:03:40,778 ERROR [payment-service] Failed to persist payment record for order 88125: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection
+2026-10-20 14:03:40,901 ERROR [order-service] Payment API call failed for order 88125: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:03:41,004 WARN  [order-service] Retrying payment for order 88125 (attempt 2/3)
+2026-10-20 14:03:52,330 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:03:52,445 ERROR [order-service] Payment API call failed for order 88125: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:03:52,500 WARN  [order-service] Retrying payment for order 88125 (attempt 3/3)
+2026-10-20 14:04:03,612 ERROR [order-service] Payment API call failed for order 88125: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:04:03,613 ERROR [order-service] Order 88125 marked PAYMENT_FAILED after 3 attempts
+2026-10-20 14:04:05,150 WARN  [postgres-primary] Slow query detected: duration=15302ms query="SELECT * FROM transactions WHERE created_at >= $1" client=batch-reconciler
+2026-10-20 14:04:10,900 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:04:10,901 ERROR [payment-service] Failed to persist payment record for order 88126: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection
+2026-10-20 14:04:11,020 ERROR [order-service] Payment API call failed for order 88126: Read timed out after 30000ms (POST http://payment-service:8080/api/v1/payments)
+2026-10-20 14:04:15,000 ERROR [api-gateway] HTTP 504 Gateway Timeout returned for POST /checkout (upstream=order-service) request_id=7f3a9c21
+2026-10-20 14:04:18,220 ERROR [api-gateway] HTTP 504 Gateway Timeout returned for POST /checkout (upstream=order-service) request_id=8b2e1d04
+2026-10-20 14:04:20,500 ERROR [payment-service] Health check FAILED (db=DOWN: connection acquisition timeout, gateway=UP)
+2026-10-20 14:04:21,010 WARN  [order-service] Circuit breaker 'paymentClient' transitioned CLOSED -> OPEN (failure rate 87.5% over last 8 calls)
+2026-10-20 14:04:25,333 ERROR [order-service] Payment API call rejected for order 88127: CircuitBreaker 'paymentClient' is OPEN
+2026-10-20 14:04:29,871 ERROR [order-service] Payment API call rejected for order 88128: CircuitBreaker 'paymentClient' is OPEN
+2026-10-20 14:04:33,019 ERROR [api-gateway] HTTP 503 Service Unavailable returned for POST /checkout (upstream=order-service) request_id=a19c7e55
+2026-10-20 14:04:36,447 ERROR [order-service] Payment API call rejected for order 88129: CircuitBreaker 'paymentClient' is OPEN
+2026-10-20 14:04:40,002 ERROR [api-gateway] HTTP 503 Service Unavailable returned for POST /checkout (upstream=order-service) request_id=c44d0b18
+2026-10-20 14:04:45,610 WARN  [postgres-primary] Slow query detected: duration=18950ms query="SELECT * FROM transactions WHERE created_at >= $1" client=batch-reconciler
+2026-10-20 14:04:50,120 ERROR [payment-service] HikariPool-1 - Connection is not available, request timed out after 30000ms
+2026-10-20 14:04:52,880 WARN  [postgres-primary] Active connections 195/200 (max_connections), 41 idle in transaction
+2026-10-20 14:04:58,300 ERROR [order-service] Payment API call rejected for order 88130: CircuitBreaker 'paymentClient' is OPEN
+2026-10-20 14:05:01,991 ERROR [api-gateway] HTTP 503 Service Unavailable returned for POST /checkout (upstream=order-service) request_id=e90f2a73
+2026-10-20 14:05:05,400 INFO  [alerting] Alert FIRED: CheckoutErrorRateHigh (error_rate=92% > 5%) severity=page

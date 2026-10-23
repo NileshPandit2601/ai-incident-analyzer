@@ -1,0 +1,34 @@
+2026-10-18T09:00:00.120Z INFO  [report-service] Started ReportServiceApplication in 14.2 seconds (JVM running for 15.0) version=3.8.1
+2026-10-18T09:00:00.450Z INFO  [report-service] JVM heap max=2048MB, GC=G1
+2026-10-18T09:15:00.001Z INFO  [report-service] Heap usage 612MB/2048MB (29%)
+2026-10-18T09:20:14.553Z INFO  [report-service] Generated PDF report rpt-10021 for tenant acme in 2.1s
+2026-10-18T09:30:00.002Z INFO  [report-service] Heap usage 904MB/2048MB (44%)
+2026-10-18T09:41:37.210Z INFO  [report-service] Generated PDF report rpt-10022 for tenant globex in 2.4s
+2026-10-18T09:45:00.000Z INFO  [report-service] Heap usage 1187MB/2048MB (58%)
+2026-10-18T09:45:02.311Z WARN  [report-service] ReportTemplateCache size=48210 entries (no eviction policy configured)
+2026-10-18T10:00:00.003Z WARN  [report-service] Heap usage 1492MB/2048MB (73%)
+2026-10-18T10:02:11.876Z WARN  [report-service] GC pause (G1 Evacuation Pause) 1240ms
+2026-10-18T10:08:45.090Z INFO  [report-service] Generated PDF report rpt-10023 for tenant initech in 6.8s
+2026-10-18T10:15:00.000Z WARN  [report-service] Heap usage 1788MB/2048MB (87%)
+2026-10-18T10:15:09.442Z WARN  [report-service] GC pause (G1 Full GC) 4120ms
+2026-10-18T10:16:30.118Z WARN  [report-service] ReportTemplateCache size=97733 entries (no eviction policy configured)
+2026-10-18T10:20:51.004Z WARN  [report-service] GC pause (G1 Full GC) 5870ms
+2026-10-18T10:21:02.660Z ERROR [api-gateway] HTTP 504 Gateway Timeout for GET /reports/rpt-10024 (upstream=report-service) request_id=d1f0aa12
+2026-10-18T10:24:18.700Z WARN  [report-service] Heap usage 1990MB/2048MB (97%)
+2026-10-18T10:24:33.909Z WARN  [report-service] GC pause (G1 Full GC) 7302ms
+2026-10-18T10:25:01.215Z ERROR [report-service] Failed to generate report rpt-10025 for tenant acme: java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.util.Arrays.copyOf(Arrays.java:3537)
+	at com.corp.report.render.PdfRenderer.render(PdfRenderer.java:211)
+	at com.corp.report.cache.ReportTemplateCache.put(ReportTemplateCache.java:77)
+2026-10-18T10:25:09.330Z ERROR [report-service] Failed to generate report rpt-10026 for tenant globex: java.lang.OutOfMemoryError: Java heap space
+2026-10-18T10:25:12.004Z ERROR [api-gateway] HTTP 502 Bad Gateway for GET /reports/rpt-10026 (upstream=report-service) request_id=e3b7c901
+2026-10-18T10:25:20.881Z ERROR [report-service] Exception in thread "scheduler-1" java.lang.OutOfMemoryError: Java heap space
+2026-10-18T10:25:22.000Z WARN  [kubelet] Liveness probe failed for pod report-service-7d9f6c-x2k4p: HTTP probe failed with statuscode: 503
+2026-10-18T10:25:32.000Z WARN  [kubelet] Liveness probe failed for pod report-service-7d9f6c-x2k4p: HTTP probe failed with statuscode: 503
+2026-10-18T10:25:42.000Z ERROR [kubelet] Container report-service in pod report-service-7d9f6c-x2k4p OOMKilled (exit code 137), restarting (restart count 1)
+2026-10-18T10:26:05.400Z INFO  [report-service] Started ReportServiceApplication in 14.9 seconds (JVM running for 15.7) version=3.8.1
+2026-10-18T10:26:05.800Z INFO  [report-service] Heap usage 588MB/2048MB (28%)
+2026-10-18T10:26:30.010Z ERROR [api-gateway] HTTP 502 Bad Gateway for GET /reports/rpt-10027 (upstream=report-service) request_id=f00c2b31
+2026-10-18T10:41:00.000Z INFO  [report-service] Heap usage 941MB/2048MB (46%)
+2026-10-18T10:56:00.002Z WARN  [report-service] Heap usage 1306MB/2048MB (64%)
+2026-10-18T10:56:01.200Z WARN  [report-service] ReportTemplateCache size=51877 entries (no eviction policy configured)

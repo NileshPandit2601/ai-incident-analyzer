@@ -1,0 +1,31 @@
+Oct 21 08:58:01 auth-01 auth-service[2211]: INFO Token issued for user u-4410 client=mobile-app kid=key-2026-09
+Oct 21 08:59:40 auth-01 auth-service[2211]: INFO Token issued for user u-1932 client=web-portal kid=key-2026-09
+Oct 21 09:00:00 auth-01 auth-service[2211]: INFO Scheduled signing key rotation started (old kid=key-2026-09, new kid=key-2026-10)
+Oct 21 09:00:01 auth-01 auth-service[2211]: INFO Signing key rotation completed, active kid=key-2026-10, JWKS endpoint updated
+Oct 21 09:00:03 auth-01 auth-service[2211]: WARN Previous key kid=key-2026-09 removed from JWKS immediately (grace_period=0s)
+Oct 21 09:00:12 api-02 profile-service[877]: ERROR JWT validation failed: no matching key for kid=key-2026-09 (cached JWKS age=3540s)
+Oct 21 09:00:12 api-02 profile-service[877]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/profile user=u-4410
+Oct 21 09:00:15 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:00:15 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/orders user=u-1932
+Oct 21 09:00:21 api-02 profile-service[877]: ERROR JWT validation failed: no matching key for kid=key-2026-09 (cached JWKS age=3549s)
+Oct 21 09:00:21 api-02 profile-service[877]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/profile user=u-7781
+Oct 21 09:00:27 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:00:27 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for POST /api/v1/orders user=u-3020
+Oct 21 09:00:30 auth-01 auth-service[2211]: INFO Token issued for user u-3020 client=mobile-app kid=key-2026-10
+Oct 21 09:00:31 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:00:31 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for POST /api/v1/orders user=u-3020
+Oct 21 09:00:44 mobile-bff-01 mobile-bff[1450]: WARN Upstream 401 rate 64% over last 60s, forcing client re-login
+Oct 21 09:00:52 api-02 profile-service[877]: ERROR JWT validation failed: no matching key for kid=key-2026-09 (cached JWKS age=3580s)
+Oct 21 09:00:52 api-02 profile-service[877]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/profile user=u-1188
+Oct 21 09:01:05 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:01:05 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/orders user=u-5521
+Oct 21 09:01:12 api-02 profile-service[877]: INFO JWKS cache refreshed from https://auth.internal/.well-known/jwks.json (keys: key-2026-10)
+Oct 21 09:01:15 api-02 profile-service[877]: ERROR JWT validation failed: no matching key for kid=key-2026-09 (cached JWKS age=3s)
+Oct 21 09:01:15 api-02 profile-service[877]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/profile user=u-6603
+Oct 21 09:01:20 api-02 profile-service[877]: INFO Token validated for user u-3020 kid=key-2026-10
+Oct 21 09:01:33 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:01:33 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for POST /api/v1/orders user=u-2409
+Oct 21 09:01:40 auth-01 auth-service[2211]: WARN Login request rate 5.2x baseline (users re-authenticating)
+Oct 21 09:01:58 api-03 orders-service[912]: ERROR JWT validation failed: signature verification failed for kid=key-2026-10 (key not found in cached JWKS)
+Oct 21 09:01:58 api-03 orders-service[912]: WARN Returning HTTP 401 Unauthorized for GET /api/v1/orders user=u-7781
+Oct 21 09:02:10 api-03 orders-service[912]: INFO JWKS cache refresh skipped: refresh_interval=3600s not elapsed (last refresh 08:01:58)

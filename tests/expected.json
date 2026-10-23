@@ -1,0 +1,32 @@
+{
+  "payment_db_timeout.log": {
+    "expected": "Critical",
+    "acceptable": ["Critical", "High"],
+    "cause_concepts": [["connection pool", "hikari", "connection"], ["database", "db", "postgres", "query"], ["batch", "reconcil"]]
+  },
+  "memory_leak_oom.log": {
+    "expected": "High",
+    "acceptable": ["High", "Critical"],
+    "cause_concepts": [["memory", "heap", "oom"], ["cache", "eviction", "leak"]]
+  },
+  "auth_token_expiry.log": {
+    "expected": "High",
+    "acceptable": ["High", "Critical"],
+    "cause_concepts": [["key", "jwks", "kid"], ["rotation", "rotat"], ["cache", "refresh", "grace"]]
+  },
+  "mixed_json_format.log": {
+    "expected": "High",
+    "acceptable": ["High", "Medium"],
+    "cause_concepts": [["warehouse_id", "keyerror", "warehouse"], ["import", "legacy", "mapping", "deploy", "v2.14"]]
+  },
+  "disk_space_warning.log": {
+    "expected": "Medium",
+    "acceptable": ["Medium", "High"],
+    "cause_concepts": [["disk", "space", "/var/log"], ["upload", "archive", "credential", "403", "accessdenied", "log-shipper", "retention"]]
+  },
+  "minor_retry_noise.log": {
+    "expected": "Low",
+    "acceptable": ["Low", "Medium"],
+    "cause_concepts": [["smtp", "connection reset", "retry", "template", "first_name"]]
+  }
+}

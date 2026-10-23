@@ -1,0 +1,16 @@
+{"timestamp": "2026-10-23T07:30:00.010Z", "level": "info", "service": "inventory-api", "message": "Deployment v2.14.0 rolled out to 3/3 pods"}
+{"timestamp": "2026-10-23T07:30:12.441Z", "level": "info", "service": "inventory-api", "message": "GET /api/stock/SKU-1001 200 in 34ms"}
+{"timestamp": "2026-10-23T07:30:45.002Z", "level": "error", "service": "inventory-api", "message": "Unhandled exception in GET /api/stock/SKU-2087: KeyError: 'warehouse_id'", "trace_id": "t-55a1"}
+Traceback (most recent call last):
+  File "/app/inventory/views.py", line 88, in get_stock
+    wh = item["warehouse_id"]
+KeyError: 'warehouse_id'
+{"timestamp": "2026-10-23T07:30:45.010Z", "level": "warning", "service": "inventory-api", "message": "Returning HTTP 500 for GET /api/stock/SKU-2087"}
+{"timestamp": "2026-10-23T07:31:02.300Z", "level": "info", "service": "inventory-api", "message": "GET /api/stock/SKU-1001 200 in 29ms"}
+{"timestamp": "2026-10-23T07:31:20.551Z", "level": "error", "service": "inventory-api", "message": "Unhandled exception in GET /api/stock/SKU-3150: KeyError: 'warehouse_id'", "trace_id": "t-55b9"}
+{"timestamp": "2026-10-23T07:31:20.560Z", "level": "warning", "service": "inventory-api", "message": "Returning HTTP 500 for GET /api/stock/SKU-3150"}
+2026-10-23 07:31:40,118 ERROR [checkout-web] Stock lookup failed for SKU-3150: upstream returned 500, showing 'unavailable' to customer
+{"timestamp": "2026-10-23T07:32:05.778Z", "level": "error", "service": "inventory-api", "message": "Unhandled exception in GET /api/stock/SKU-2087: KeyError: 'warehouse_id'", "trace_id": "t-55c4"}
+{"timestamp": "2026-10-23T07:32:05.790Z", "level": "warning", "service": "inventory-api", "message": "Returning HTTP 500 for GET /api/stock/SKU-2087"}
+{"timestamp": "2026-10-23T07:32:30.020Z", "level": "info", "service": "inventory-api", "message": "GET /api/stock/SKU-1450 200 in 31ms"}
+{"timestamp": "2026-10-23T07:33:00.000Z", "level": "info", "service": "inventory-sync", "message": "Legacy warehouse import completed: 312 items imported without warehouse mapping"}

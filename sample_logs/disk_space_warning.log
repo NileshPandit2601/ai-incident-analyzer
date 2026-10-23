@@ -1,0 +1,19 @@
+[2026-10-22 01:00:00] [INFO] [log-shipper] Rotated application logs on node web-03 (12 files, 3.1GB)
+[2026-10-22 01:00:05] [WARN] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), will retry next cycle
+[2026-10-22 02:00:00] [INFO] [node-exporter] Disk /var/log usage 78% on web-03
+[2026-10-22 02:00:04] [WARN] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), will retry next cycle
+[2026-10-22 03:00:00] [WARN] [node-exporter] Disk /var/log usage 83% on web-03 (threshold 80%)
+[2026-10-22 03:00:06] [WARN] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), will retry next cycle
+[2026-10-22 03:00:07] [WARN] [log-shipper] Local retention: 41 rotated files pending upload, not deleting
+[2026-10-22 04:00:00] [WARN] [node-exporter] Disk /var/log usage 87% on web-03 (threshold 80%)
+[2026-10-22 04:00:05] [WARN] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), will retry next cycle
+[2026-10-22 04:12:44] [INFO] [web-app] Request GET /home completed 200 in 84ms
+[2026-10-22 05:00:00] [WARN] [node-exporter] Disk /var/log usage 90% on web-03 (threshold 80%)
+[2026-10-22 05:00:06] [WARN] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), will retry next cycle
+[2026-10-22 05:30:19] [INFO] [web-app] Request GET /products completed 200 in 120ms
+[2026-10-22 06:00:00] [WARN] [node-exporter] Disk /var/log usage 92% on web-03 (threshold 80%)
+[2026-10-22 06:00:04] [ERROR] [log-shipper] Upload to archive bucket failed: 403 AccessDenied (credential expired), retry budget exhausted for 6 cycles
+[2026-10-22 06:00:05] [WARN] [log-shipper] Local retention: 63 rotated files pending upload, not deleting
+[2026-10-22 06:10:22] [INFO] [web-app] Request GET /home completed 200 in 91ms
+[2026-10-22 06:30:00] [INFO] [node-exporter] Disk /data usage 41% on web-03
+[2026-10-22 06:45:10] [INFO] [web-app] Health check OK

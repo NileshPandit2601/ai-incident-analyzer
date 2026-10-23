@@ -1,0 +1,16 @@
+2026-10-22 11:00:01 INFO  [notification-service] Sent email notification id=n-90011 to template=order_confirmation
+2026-10-22 11:00:44 INFO  [notification-service] Sent email notification id=n-90012 to template=order_shipped
+2026-10-22 11:02:13 WARN  [notification-service] SMTP connection reset by peer while sending id=n-90013, retrying (1/3)
+2026-10-22 11:02:14 INFO  [notification-service] Sent email notification id=n-90013 to template=password_reset (after 1 retry)
+2026-10-22 11:05:39 INFO  [notification-service] Sent email notification id=n-90014 to template=order_confirmation
+2026-10-22 11:09:02 INFO  [notification-service] Sent email notification id=n-90015 to template=order_confirmation
+2026-10-22 11:12:57 WARN  [notification-service] SMTP connection reset by peer while sending id=n-90016, retrying (1/3)
+2026-10-22 11:12:58 INFO  [notification-service] Sent email notification id=n-90016 to template=order_shipped (after 1 retry)
+2026-10-22 11:15:30 INFO  [notification-service] Sent email notification id=n-90017 to template=newsletter
+2026-10-22 11:21:11 ERROR [notification-service] Template rendering failed for id=n-90018: missing variable 'first_name' in template=newsletter, sent with fallback greeting
+2026-10-22 11:24:48 INFO  [notification-service] Sent email notification id=n-90019 to template=order_confirmation
+2026-10-22 11:30:00 INFO  [notification-service] Queue depth=3, consumers=4, avg send latency=410ms
+2026-10-22 11:33:16 WARN  [notification-service] SMTP connection reset by peer while sending id=n-90020, retrying (1/3)
+2026-10-22 11:33:17 INFO  [notification-service] Sent email notification id=n-90020 to template=order_confirmation (after 1 retry)
+2026-10-22 11:40:05 INFO  [notification-service] Sent email notification id=n-90021 to template=order_shipped
+2026-10-22 11:45:00 INFO  [notification-service] Queue depth=1, consumers=4, avg send latency=395ms
