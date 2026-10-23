@@ -16,8 +16,12 @@ def incident_markdown(r: AnalysisResult, source_name: str = "pasted logs") -> st
     out = [
         f"# Incident Summary: {r.severity}",
         "",
-        f"*Generated {datetime.now():%Y-%m-%d %H:%M} by AI Incident Analyzer ({r.model}, local Ollama). "
-        "AI-assisted analysis: verify before acting.*",
+        (
+            f"*Generated {datetime.now():%Y-%m-%d %H:%M} by AI Incident Analyzer ({r.model}, local Ollama). "
+            "AI-assisted analysis: verify before acting.*"
+            if a
+            else f"*Generated {datetime.now():%Y-%m-%d %H:%M} by AI Incident Analyzer (rule-based analysis only).*"
+        ),
         "",
         f"**Source:** {source_name} · **Log window:** {_t(p.start)} → {_t(p.end)} · "
         f"**Records:** {p.total_entries} ({p.error_count} errors, {p.warn_count} warnings) · "
