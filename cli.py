@@ -20,7 +20,7 @@ from analyzer.report import incident_markdown
 def main() -> int:
     ap = argparse.ArgumentParser(description="AI-Powered Incident Analyzer (local Ollama)")
     ap.add_argument("logfile", help="log file to analyze, or - for stdin")
-    ap.add_argument("--model", help="Ollama model (default from OLLAMA_MODEL or qwen2.5:7b)")
+    ap.add_argument("--model", help="Ollama model (default from OLLAMA_MODEL or qwen3.5:9b)")
     ap.add_argument("--no-llm", action="store_true", help="deterministic analysis only")
     ap.add_argument("--json", metavar="PATH", help="also write the raw AI JSON + validation to this file")
     ap.add_argument("--show-prompt", action="store_true", help="print the prompt sent to the model")

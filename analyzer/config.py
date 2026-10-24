@@ -18,7 +18,7 @@ class Settings:
     ollama_url: str = os.getenv("OLLAMA_URL", "http://localhost:11434")
     model: str = os.getenv("OLLAMA_MODEL", "qwen3.5:9b")
     # Ollama's default context window (2-4k) is too small for logs + digest + JSON answer.
-    # 8k keeps more of a 7B model on a small GPU; raise it on bigger hardware.
+    # 8k keeps more of the model on a small GPU; raise it on bigger hardware.
     num_ctx: int = int(os.getenv("OLLAMA_NUM_CTX", "8192"))
     # Max seconds between streamed chunks (not total time), so slow CPU inference still finishes.
     timeout_s: int = int(os.getenv("OLLAMA_TIMEOUT", "180"))
