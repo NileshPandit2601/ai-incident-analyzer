@@ -43,23 +43,9 @@ logs ─► Parser ─► Pattern analyzer ─► Rule severity ─────�
               └─ facts digest + numbered log lines ─► LLM (JSON schema) ─► Validator ─► UI / report
 ```
 
-For the reasoning behind the design (problem framing, risks, alternatives considered and lessons from testing), see
-[APPROACH.md](APPROACH.md).
-
-The work is split between code and the model. A local model is good at reasoning about an incident but unreliable at
-counting and prone to inventing details, so code handles the facts and the model reasons over them.
-
-| Requirement | How it is met |
-|---|---|
-| Summarize errors and patterns | The parser handles plain, ISO, bracketed, syslog and JSON-lines logs, and attaches stack traces to their record. Messages are normalized into **signatures** (IDs and numbers masked) and grouped with counts, first/last seen, bursts and resource peaks. |
-| Likely cause, evidence vs. assumptions | The output schema has separate `evidence[]` (with cited line numbers) and `assumptions[]`. Evidence is ordered before the cause, so the model commits to observations first. |
-| Severity with reasoning | Two independent opinions: a transparent **rule score**, where every point has a stated reason, and the **AI's assessment**. If they are two or more levels apart, the result is flagged for human review. |
-| Troubleshooting and escalation | Ordered next steps plus an escalation decision with who to involve and why. |
-| Incident summary | A ready-to-share summary, downloadable as Markdown or JSON. |
-
-**Hallucination controls.** The validator checks that every cited line exists, was shown to the model, and matches
-the claim, and marks each claim as verified, weak or unverified. It flags numbers that appear nowhere in the log and
-downgrades confidence when evidence is weak. If Ollama is down, the app still shows the full rule-based analysis.
+Code handles the facts (parsing, counting, grouping repeated errors, rule-based severity). The model reasons over
+them, and its answer must cite log lines; the validator checks every citation, so guesses can't pass as evidence.
+The design reasoning, risks, alternatives and lessons from testing are in **[APPROACH.md](APPROACH.md)**.
 
 ## Models and tools
 
