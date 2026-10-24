@@ -6,6 +6,8 @@ and writes a shareable incident summary.
 
 It runs **fully locally**: the model is served by [Ollama](https://ollama.com) (`qwen3.5:9b`), so no log data leaves the machine.
 
+**▶ Demo video:** [watch the walkthrough on Google Drive](https://drive.google.com/file/d/1VNu5vWcCvUq3N-PxXgQxkw5GvUDx_6UR/view?usp=sharing)
+
 **Run it yourself:** see [Quick start](#quick-start).
 
 ## Screenshots
