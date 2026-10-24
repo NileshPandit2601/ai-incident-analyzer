@@ -21,20 +21,36 @@ The incident summary exported from this run: [screenshots/incident_summary_examp
 
 ## Quick start
 
-Requirements: Python 3.10+ and a running Ollama with the model pulled.
+**Prerequisites:** Python 3.10+ and [Ollama](https://ollama.com/download) running locally.
+
+**1. Install**
 
 ```powershell
 ollama pull qwen3.5:9b
 python -m venv .venv
-.\.venv\Scripts\activate            # macOS/Linux: source .venv/bin/activate
+.\.venv\Scripts\activate          # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-
-streamlit run app.py                # web UI -> http://localhost:8501
-python cli.py sample_logs\payment_db_timeout.log   # CLI (add --no-llm for instant rule-only analysis)
-python -m pytest -q tests           # 39 unit tests, no Ollama needed
 ```
 
-Settings such as the Ollama URL, model and context size go in `.env` (see `.env.example`) or the UI sidebar.
+**2. Run**
+
+```powershell
+streamlit run app.py              # opens http://localhost:8501
+```
+
+In the app, choose **Sample log**, then `payment_db_timeout.log`, then **Analyze**.
+
+**Other ways to run it**
+
+| Command | What it does |
+|---|---|
+| `python cli.py sample_logs\payment_db_timeout.log` | Same analysis from the command line |
+| `python cli.py <file> --no-llm` | Instant rule-based analysis, no Ollama needed |
+| `python -m pytest -q tests` | 39 unit tests, no Ollama needed |
+| `python tests\eval_scenarios.py` | Full evaluation against the model (~35 min) |
+
+Settings (Ollama URL, model, context size) can be changed in the app sidebar or in a `.env` file (see `.env.example`).
+On a machine without a large GPU, one analysis takes a few minutes; a smaller model such as `qwen3.5:4b` is faster.
 
 ## Approach: parse first, reason second, verify last
 
